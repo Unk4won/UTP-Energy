@@ -59,14 +59,13 @@ const physicsEngine = {
   },
 
   /**
-   * Voltaje final del capacitor, obtenido al despejar V de U = ½·C·V²
-   * e igualar U a la energía cinética disponible (V = √(2·E_k / C)).
-   * Supone una transferencia ideal de energía, sin pérdidas en la conversión.
+   * Voltaje final del capacitor (Fuerza Electromotriz Equivalente ε).
+   * Según la Ecuación 16 del informe: ε = √(E_k / C).
    * @returns {number} Voltaje en voltios (V).
    */
   getInitialVoltage: () => {
     const kinetic = physicsEngine.getKineticEnergy();
-    return Math.sqrt((2 * kinetic) / physicsState.capacitance);
+    return Math.sqrt(kinetic / physicsState.capacitance);
   },
 
   /**
